@@ -28,59 +28,10 @@
   </button>
   <script>monkeyBehavior();</script>
   <p></p>
-  <button type="button" id="movingButton"
-    style="background-color: blueviolet; position: absolute; left: 0px; top: 150px;">
+  <button type="button" id="movingButton" style="background-color: blueviolet; position: absolute; left: 0px; top: 150px;">
     Try and catch me!
   </button>
   <script>
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    async function alternate() {
-      while (true) {
-        await sleep(175);
-        if (document.getElementById("movingButton").style.backgroundColor == "blueviolet") {
-          document.getElementById("movingButton").style.backgroundColor = "yellow";
-        }
-        else {
-          document.getElementById("movingButton").style.backgroundColor = "blueviolet";
-        }
-      }
-    }
-
-    async function moveSideToSide() {
-      while (true) {
-        for (var i = 0; i < 50; i++) {
-          document.getElementById("movingButton").style.position = "absolute";
-          var xPos = parseInt(document.getElementById("movingButton").style.left);
-          xPos += 10;
-          document.getElementById("movingButton").style.left = xPos.toString() + "px";
-          await sleep(50);
-        }
-        for (var i = 0; i < 50; i++) {
-          document.getElementById("movingButton").style.position = "absolute";
-          var yPos = parseInt(document.getElementById("movingButton").style.top);
-          yPos += 10;
-          document.getElementById("movingButton").style.top = yPos.toString() + "px";
-          await sleep(50);
-        }
-        for (var i = 0; i < 50; i++) {
-          document.getElementById("movingButton").style.position = "absolute";
-          var xPos = parseInt(document.getElementById("movingButton").style.left);
-          xPos -= 10;
-          document.getElementById("movingButton").style.left = xPos.toString() + "px";
-          await sleep(50);
-        }
-        for (var i = 0; i < 50; i++) {
-          document.getElementById("movingButton").style.position = "absolute";
-          var yPos = parseInt(document.getElementById("movingButton").style.top);
-          yPos -= 10;
-          document.getElementById("movingButton").style.top = yPos.toString() + "px";
-          await sleep(50);
-        }
-      }
-    }
-
     alternate();
     moveSideToSide();
   </script>
@@ -89,31 +40,10 @@
     Try and Catch ME 😉
   </button>
   <script>
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    async function main() {
-      var bttn = document.getElementById("random");
-      while (true) {
-        await sleep(500);
-        var xPos = Math.random() * 500;
-        var yPos = Math.random() * 500;
-        bttn.style.left = xPos.toString() + "px";
-        bttn.style.top = yPos.toString() + "px";
-        var pnl = document.getElementById("results panel");
-        pnl.innerHTML += "At " + xPos.toFixed(2) + ", " + yPos.toFixed(2) + "<br />";
-        bttn.hidden = false;
-        //var marker = document.getElementById("circ");
-        //marker.style.left = xPos;
-        //marker.style.top = yPos;
-      }
-    }
-
-    main();
+    randomMotion();
   </script>
   <p id="results panel">
-    Results Panel:<br>
+    Coordinates of where the random motion button has been:<br>
   </p>
 </body>
 <html>
