@@ -1,3 +1,3 @@
 # Website-Test
 
-### Test of GitHub Sites
+### Test of GitHub Pages
