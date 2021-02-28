@@ -1,0 +1,25 @@
+p {
+    font-family: "Helvetica";
+    font-size: small;
+}
+
+img {
+    border: 10px solid #ffffff;
+}
+
+html {
+    font-family: Georgia; 
+    background-color:Tomato;
+    text-align: center;
+}
+
+button {
+    border: 3px solid #000000;
+    border-radius: 12px;
+    width: 100px;
+    background-color: #ffc3b8;
+}
+
+svg {
+    position: absolute;
+}

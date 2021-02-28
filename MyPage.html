@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html id = "html_main">
+<head>
+  <link rel="stylesheet" href="MyStyles.css">
+  <title>This is My Page</title>
+</head>
+<body id = "body">
+  <h2>
+      Welcome To My Page!
+  </h2>
+  <h4>
+      <p id = "parg">Below, you'll find a picture of me pointing to myself.</p>
+      <img src="Images/IMG_3079.jpeg" alt="The Picture of me." width="500">
+  </h4>
+  <p>I am currently a junior studying at Swarthmore college.</p>
+  <p>Below, you'll find buttons which will change the background colors.</p>
+  <button type="button" id = "mainButton"> Change colors between coral and sky blue! </button>
+  <script>
+      document.getElementById("mainButton").onclick = function(){
+        var currentColor = document.getElementById("html_main").style.backgroundColor;
+        if(currentColor == "tomato"){
+          document.getElementById("html_main").style.backgroundColor = "deepskyblue";
+        }
+        else{
+          document.getElementById("html_main").style.backgroundColor = "tomato";
+        }
+    }
+  </script>
+  <p></p>
+  <button type="button" id = "gradientButton">
+    Click this button to randomly change the background colors!
+  </button>
+  <script>
+    document.getElementById("gradientButton").onclick = function(){
+      var randomColor = Math.floor(Math.random()*16777215).toString(16);
+      document.getElementById("html_main").style.backgroundColor = "#" + randomColor;
+    }
+  </script>
+<p></p>
+<button type="button" id = "monkeyButton">
+    Click me to see an emoji of a monkey!
+  </button>
+  <script>
+    var w = document.getElementById("monkeyButton").offsetWidth;
+    var h = document.getElementById("monkeyButton").offsetHeight;
+    console.log("H & W worked");
+    console.log(w);
+    console.log(h);
+  </script>
+  <script>
+      document.getElementById("monkeyButton").onmousedown = function(){
+        document.getElementById("monkeyButton").style.width = w.toString() + "px";
+        document.getElementById("monkeyButton").style.height = h.toString() + "px";
+        document.getElementById("monkeyButton").innerHTML = "🐒";
+        console.log("This worked");
+      }
+      document.getElementById("monkeyButton").onmouseup = function(){
+        document.getElementById("monkeyButton").innerHTML = "Click me to see an emoji of a monkey!";
+        console.log("This worked");
+      }
+  </script>
+  <p></p>
+  <button type = "button" id = "movingButton" style="background-color: blueviolet; position: absolute; left: 0px; top: 150px;">
+    Try and catch me!
+  </button>
+  <script>
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function alternate(){
+      while(true){
+        await sleep(175);
+        if(document.getElementById("movingButton").style.backgroundColor == "blueviolet"){
+          document.getElementById("movingButton").style.backgroundColor = "yellow";
+        }
+        else{
+          document.getElementById("movingButton").style.backgroundColor = "blueviolet";
+        }
+      }
+    }
+
+    async function moveSideToSide(){
+      while(true){
+        for(var i = 0; i < 50; i++){
+          document.getElementById("movingButton").style.position = "absolute";
+          var xPos = parseInt(document.getElementById("movingButton").style.left);
+          xPos += 10;
+          document.getElementById("movingButton").style.left = xPos.toString() + "px";
+          await sleep(50);
+        }
+        for(var i = 0; i < 50; i++){
+          document.getElementById("movingButton").style.position = "absolute";
+          var yPos = parseInt(document.getElementById("movingButton").style.top);
+          yPos += 10;
+          document.getElementById("movingButton").style.top = yPos.toString() + "px";
+          await sleep(50);
+        }
+        for(var i = 0; i < 50; i++){
+          document.getElementById("movingButton").style.position = "absolute";
+          var xPos = parseInt(document.getElementById("movingButton").style.left);
+          xPos -= 10;
+          document.getElementById("movingButton").style.left = xPos.toString() + "px";
+          await sleep(50);
+        }
+        for(var i = 0; i < 50; i++){
+          document.getElementById("movingButton").style.position = "absolute";
+          var yPos = parseInt(document.getElementById("movingButton").style.top);
+          yPos -= 10;
+          document.getElementById("movingButton").style.top = yPos.toString() + "px";
+          await sleep(50);
+        }
+      }
+  }
+
+    alternate();
+    moveSideToSide();
+  </script>
+  <p></p>
+  <button type = "button" id = "random" style="position: absolute;" hidden="true">
+    Try and Catch ME 😉
+  </button>
+  <script>
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function main(){
+      var bttn = document.getElementById("random");
+      while(true){
+        await sleep(500);
+        var xPos = Math.random()*500;
+        var yPos = Math.random()*500;
+        bttn.style.left = xPos.toString()+"px";
+        bttn.style.top = yPos.toString()+"px";
+        var pnl = document.getElementById("results panel");
+        pnl.innerHTML += "At " + xPos.toFixed(2) +", " + yPos.toFixed(2)+"<br />";
+        bttn.hidden = false;
+        //var marker = document.getElementById("circ");
+        //marker.style.left = xPos;
+        //marker.style.top = yPos;
+    }
+  }
+
+  main();
+  </script>
+  <p id = "results panel">
+    Results Panel:<br>
+  </p>
+</body>
+<html>
